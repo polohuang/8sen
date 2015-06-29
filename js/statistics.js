@@ -40,6 +40,9 @@ $(document).ready(function(){
 		        title: {
 		            text: '八仙水上樂園患者即時動向'
 		        },
+		        subtitle: {
+		        	text: 'Updated at: ' + data.lastmodify
+		        },
 		        tooltip: {
 		            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
 		        },
@@ -72,5 +75,6 @@ $(document).ready(function(){
 		        }]
 		    });
 		});
+		console.log(data.lastmodify);
 	}, "json");
 });
