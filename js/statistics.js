@@ -4,28 +4,28 @@ $(document).ready(function(){
 		var type0=0,type1=0,type2=0,type3=0,type4=0,type5=0,type6=0,type7=0;
 		for(var i=0; i<data.data.length; i++){
 			switch(data.data[i]["即時動向"]) {
-				case "出院":
+				case type[0]:
 					type0++;
 					break;
-				case "加護病房":
+				case type[1]:
 					type1++;
 					break;
-				case "轉院":
+				case type[2]:
 					type2++;
 					break;
-				case "一般病房":
+				case type[3]:
 					type3++;
 					break;
-				case "其它":
+				case type[4]:
 					type4++;
 					break;
-				case "自動出院(AAD)":
+				case type[5]:
 					type5++;
 					break;
-				case "手術":
+				case type[6]:
 					type6++;
 					break;
-				case "留觀":
+				case type[7]:
 					type7++;
 					break;
 			}
@@ -44,7 +44,7 @@ $(document).ready(function(){
 		        	text: 'Updated at: ' + data.lastmodify
 		        },
 		        tooltip: {
-		            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+		            pointFormat: '{series.name}: <b>{point.y}</b>'
 		        },
 		        plotOptions: {
 		            pie: {
@@ -62,19 +62,35 @@ $(document).ready(function(){
 		        series: [{
 		            type: 'pie',
 		            name: 'Total',
-		            data: [
-		                [type[0], type0],
-		                [type[1], type1],
-		                [type[2], type2],
-		                [type[3], type3],
-		                [type[4], type4],
-		                [type[5], type5],
-		                [type[6], type6],
-		                [type[7], type7]
-		            ]
+		            data: [{
+		                name : type[0],
+		                y : type0
+		            },{
+		                name : type[1],
+		                y : type1
+		            },{
+		            	name : type[2],
+		                y : type2
+		            },{
+		            	name : type[3],
+		                y : type3
+		            },{
+		            	name : type[4],
+		                y : type4
+		            },{
+		            	name : type[5],
+		                y : type5
+		            },{
+		            	name : type[6],
+		                y : type6
+		            },{
+		            	name : type[7],
+		                y : type7
+		            }]
 		        }]
 		    });
 		});
-		console.log(data.lastmodify);
+
+		$("#datasource").html("資料來源: " + data.source);
 	}, "json");
 });
